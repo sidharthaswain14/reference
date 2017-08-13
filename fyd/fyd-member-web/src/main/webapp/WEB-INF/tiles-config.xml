@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base-definition" template="/WEB-INF/layout/defaultlayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="leftnavigation" value="/WEB-INF/tiles/leftnavigation.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/blank.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+
+	<definition name="registration-definition" template="/WEB-INF/layout/registrationlayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/blank.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+
+	<definition name="member-registration-definition" extends="registration-definition">
+		<put-attribute name="title" value="Member Registration" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member-registration.jsp" />
+	</definition>
+
+	<definition name="registration-success-definition" extends="registration-definition">
+		<put-attribute name="title" value="Registration Success" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/registration-success.jsp" />
+	</definition>
+
+	<definition name="verificationform" extends="registration-definition">
+		<put-attribute name="title" value="Verification Form" />
+		<put-attribute name="body" value="/WEB-INF/jsp/verificationform.jsp" />
+	</definition>
+
+	<definition name="verificationsuccess" extends="registration-definition">
+		<put-attribute name="title" value="Verification Success" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/verificationsuccess.jsp" />
+	</definition>
+
+	<definition name="verificationfailure" extends="registration-definition">
+		<put-attribute name="title" value="Verification Failed" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/verificationfailure.jsp" />
+	</definition>
+</tiles-definitions>

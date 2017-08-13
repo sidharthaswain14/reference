@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+<definition name="fyd_layout" template="/WEB-INF/layouts/fyd_base_layout.jsp">
+<put-attribute name="header" value="/WEB-INF/commonjsp/header.jsp"></put-attribute>
+
+<!-- <put-attribute name="lpad" value="/WEB-INF/commonjsp/leftnav.jsp"></put-attribute> -->
+<put-attribute name="body" value="/WEB-INF/commonjsp/blank.jsp"></put-attribute>
+
+<put-attribute name="footer" value="/WEB-INF/commonjsp/footer.jsp"></put-attribute>
+</definition>
+
+<definition name="partner-registration" extends="fyd_layout">
+<put-attribute name="body" value="/WEB-INF/jsp/partner-registration.jsp"></put-attribute>
+</definition>
+
+<definition name="primery-registration-success" extends="fyd_layout">
+<put-attribute name="body" value="/WEB-INF/jsp/primery-registration-success.jsp"></put-attribute>
+</definition>
+
+<definition name="second-phase-partner-registration" extends="fyd_layout">
+<put-attribute name="body" value="/WEB-INF/jsp/second-phase-partner-registration.jsp"></put-attribute>
+</definition>
+
+<definition name="second-phase-partner-registration-success" extends="fyd_layout">
+<put-attribute name="body" value="/WEB-INF/jsp/second-phase-partner-registration-success.jsp"></put-attribute>
+</definition>
+
+<definition name="partner-registration-success" extends="fyd_layout">
+<put-attribute name="body" value="/WEB-INF/jsp/partner-registration-success.jsp"></put-attribute>
+</definition>
+
+
+</tiles-definitions>

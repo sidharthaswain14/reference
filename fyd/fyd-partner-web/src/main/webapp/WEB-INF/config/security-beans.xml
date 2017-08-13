@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+		<context:annotation-config></context:annotation-config>
+<context:component-scan base-package="com.fyd.*"></context:component-scan>
+<import resource="classpath:/META-INF/config/persistence-beans.xml"/>
+<bean id="passWordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+<bean id="userDetailsServiceImpl" class="com.fyd.partner.service.UserDetailsServiceImpl"></bean>
+<security:http auto-config="true">
+		<security:form-login login-page="/login.htm"
+			login-processing-url="/partner_spring_security_check" username-parameter="userName"
+			password-parameter="passWord" default-target-url="/home.htm"
+			always-use-default-target="true" authentication-failure-handler-ref="authenticationFailureHandler" />
+
+		<security:logout logout-url="/logout.htm"
+			logout-success-url="/logout-success.htm" />
+		<security:intercept-url pattern="/home.htm"
+			access="ROLE_PARTNER" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="userDetailsServiceImpl" >
+			<security:password-encoder ref="passWordEncoder"></security:password-encoder>
+			</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="authenticationFailureHandler"
+		class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+		<property name="exceptionMappings">
+			<props>
+				<prop
+					key="org.springframework.security.authentication.BadCredentialsException">
+					/login.htm?error=badCredentails
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>
